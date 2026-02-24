@@ -12,7 +12,9 @@ function calculateRiskRating(claimHistory) {
   const numberOfKeyWords = claimHistory
     .toLowerCase()
     .split(/\s+/)
-    .filter((word) => keyWords.includes(word)).length;
+    .filter((word) =>
+      keyWords.some((keyWord) => word.includes(keyWord))
+    ).length;
 
   return Math.min(numberOfKeyWords, 5);
 }
