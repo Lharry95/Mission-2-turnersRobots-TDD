@@ -1,4 +1,4 @@
-const { searchKeyWords } = require("./app");
+const { searchKeyWords } = require("../src/riskRating");
 
 describe("Tests related to claimHistory", () => {
   test("Function has an input with only one keyword included", () => {
