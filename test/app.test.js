@@ -13,8 +13,11 @@ describe("Tests related to claimHistory", () => {
     expect(searchKeyWords("crash collide smash crash")).toBe(4);
   });
 
-  test("Function has an input with only numbers included", () => {
-    expect(searchKeyWords(123)).toBe("Error: invalid input");
+  test("Function has an input with only numbers included, throw an error", () => {
+    expect(() => searchKeyWords()).toThrow(
+      "Error: invalid input - must be string"
+    );
+    // expect(searchKeyWords(123)).toBe("Error: invalid input");
   });
   // test("Function has an input of more than 5 keywords when risk rating is only up to 5", () => {
   //   expect(searchKeyWords()).

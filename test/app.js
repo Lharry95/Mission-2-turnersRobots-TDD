@@ -12,8 +12,8 @@ function searchKeyWords(word) {
     return 4;
   }
 
-  if (word === 123) {
-    return "Error: invalid input";
+  if (typeof word !== "string") {
+    throw new Error("Error: invalid input - must be string");
   }
 }
 
