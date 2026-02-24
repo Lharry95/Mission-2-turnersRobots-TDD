@@ -9,7 +9,7 @@ const { calculateRiskRating } = require("./src/riskRating");
 const app = express();
 dotenv.config();
 
-app.get("/claimHistory", (req, res) => {
+app.post("/riskRating", (req, res) => {
   res.json({
     keywords: _.sample(keywords),
   });
@@ -17,6 +17,6 @@ app.get("/claimHistory", (req, res) => {
 
 app.post("/riskRating", () => {});
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log("API Server is running..."));
