@@ -4,12 +4,12 @@ const cors = require("cors");
 const _ = require("lodash");
 const { v4: uuid } = require("uuid");
 const dotenv = require("dotenv");
+const { calculateRiskRating } = require("./src/riskRating");
 
 const app = express();
 dotenv.config();
 
 app.get("/claimHistory", (req, res) => {
-  const keywords = ["crash", "collide", "scratch", "bump", "smash"];
   res.json({
     keywords: _.sample(keywords),
   });

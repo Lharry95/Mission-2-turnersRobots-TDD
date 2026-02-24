@@ -1,6 +1,6 @@
 const { searchKeyWords } = require("../src/riskRating");
 
-describe("Tests related to claimHistory", () => {
+describe("Tests related to claimHistory to determine risk rating", () => {
   test("Function has an input with only one keyword included", () => {
     expect(searchKeyWords("crash")).toBe(1);
   });
