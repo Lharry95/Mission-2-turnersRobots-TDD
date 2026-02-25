@@ -1,5 +1,14 @@
 const express = require("express");
 const { calculateDiscount } = require("./src/discount");
+app.use(express.json());
+dotenv.config();
+
+// Export app so it can be used in tests with supertest
+const dotenv = require("dotenv");
+const { calculateRiskRating } = require("./src/riskRating");
+
+
+// Hayleys API
 
 // Create the Express app
 const app = express();
@@ -29,19 +38,11 @@ app.post("/discount", (req, res) => {
   return res.status(200).json({ discount_rate: result });
 });
 
-// Start the server on port 3000 (or whatever PORT is set to in the environment)
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Discount API running on port ${PORT}`);
-});
 
-// Export app so it can be used in tests with supertest
-const dotenv = require("dotenv");
-const { calculateRiskRating } = require("./src/riskRating");
 
-const app = express();
-app.use(express.json());
-dotenv.config();
+
+
+// Lharyzza's API
 
 app.post("/riskRating", (req, res) => {
   const { claimHistory } = req.body;
@@ -64,8 +65,11 @@ app.post("/riskRating", (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 4000;
+// Start the server on port 3000 (or whatever PORT is set to in the environment)
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Discount API running on port ${PORT}`);
+});
 
-app.listen(PORT, () => console.log("API Server is running..."));
 
 module.exports = app;
