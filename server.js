@@ -27,12 +27,6 @@ app.post("/riskRating", (req, res) => {
   }
 });
 
-app.get("/riskRating", (req, res) => {
-  test("responds with json content", () => {
-    expect({ riskRating: rating });
-  });
-});
-
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => console.log("API Server is running..."));
