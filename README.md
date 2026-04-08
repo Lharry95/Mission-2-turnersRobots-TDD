@@ -1,8 +1,8 @@
-# Turners Car Insurance — API 4: Driver's Age & Experience to Discount Rate
+# Turners Car Insurance — API 4: Claim History converted to risk rating
 
 ## Overview
 
-This API is part of the Turners Car Insurance project, built using **Test-Driven Development (TDD)**. It accepts a driver's age and years of experience, and returns a suggested insurance discount rate.
+This API is part of the Turners Car Insurance project, built using **Test-Driven Development (TDD)**. It accepts a users claim history and returns a suggested risk rating.
 
 ---
 
@@ -19,9 +19,9 @@ This API is part of the Turners Car Insurance project, built using **Test-Driven
 ```
 mission-2-turners-robots/
 ├── src/
-│   └── discount.js          # Business logic for calculating discount rate
-├── tests/
-│   └── discount.test.js     # Jest unit tests
+│   └── riskRating.js          # Business logic for calculating risk rating
+├── test/
+│   └── riskRating.test.js     # Jest unit tests
 ├── server.js                # Express API server
 ├── package.json
 └── README.md
@@ -55,16 +55,15 @@ npm test
 
 ## API Reference
 
-### `POST /discount`
+### `POST /riskRating`
 
-Calculates a discount rate based on the driver's age and driving experience.
+Calculates a risk rating based on the user's claim history.
 
 **Request Body**
 
 ```json
 {
-  "age": 30,
-  "experience": 6
+  "claimHistory": "I crashed my car. That's the only crash I had"
 }
 ```
 
@@ -72,7 +71,7 @@ Calculates a discount rate based on the driver's age and driving experience.
 
 ```json
 {
-  "discount_rate": 10
+  "riskRating": 2
 }
 ```
 
@@ -80,23 +79,17 @@ Calculates a discount rate based on the driver's age and driving experience.
 
 ```json
 {
-  "error": "there is an error"
+  "error": "Error: invalid input - must be string"
 }
 ```
 
----
+or
 
-## Business Rules
-
-| Condition                      | Discount |
-| ------------------------------ | -------- |
-| Driver aged 25 or older        | +5%      |
-| Driver aged 40 or older        | +5%      |
-| 5 or more years of experience  | +5%      |
-| 10 or more years of experience | +5%      |
-| **Maximum discount**           | **20%**  |
-
-Invalid inputs (negative numbers or non-numeric values) return an error.
+```json
+{
+  "error": "Error! please enter claim History"
+}
+```
 
 ---
 
@@ -104,16 +97,8 @@ Invalid inputs (negative numbers or non-numeric values) return an error.
 
 5 Jest unit tests written using TDD — all passing ✅
 
-| Test                                | Input                      | Expected Output |
-| ----------------------------------- | -------------------------- | --------------- |
-| Age threshold, no experience        | age: 25, experience: 0     | 5               |
-| Age threshold + experience discount | age: 25, experience: 5     | 10              |
-| Maximum discount                    | age: 40, experience: 10    | 20              |
-| Invalid — negative age              | age: -1, experience: 5     | "error"         |
-| Invalid — non-numeric experience    | age: 25, experience: "abc" | "error"         |
-
 ---
 
 ## Author
 
-Hayley — Mission 2, Level 5 Advanced, Mission Ready 2026
+Lharyzza Va'ai-Ah Hong — Mission 2, Level 5 Advanced, Mission Ready 2026
